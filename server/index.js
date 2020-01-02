@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
 const path = require('path')
+const db = require('./db')
+
+db.sync()
 
 app.use(express.static(path.join(__dirname, '..', 'dist')))
 
