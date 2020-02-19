@@ -1,5 +1,7 @@
 import React from 'react'
 import { ContentArea, Nav, Header, VL, } from './Portfolio.css'
+import SearchAndBuy from './SearchAndBuy'
+import PortfolioTable from './PortfolioTable'
 
 const Portfolio = () => {
   return (
@@ -12,9 +14,9 @@ const Portfolio = () => {
       <Header>Portfolio</Header>
 
       <ContentArea>
-        aihjsgoakljg Content
+        <PortfolioTable />
         <VL />
-        wow other contnet
+        <SearchAndBuy />
       </ContentArea>
     </>
   )
