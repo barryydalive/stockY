@@ -1,5 +1,8 @@
 const Router = require('express').Router()
 const TickerSymbols = require('../db/stockTickerSeedData')
+
+Router.use('/auth', require('./auth'))
+
 Router.get('/search/:search', (req, res, next)=>{
   let search = req.params.search
   search = search.toLowerCase()
