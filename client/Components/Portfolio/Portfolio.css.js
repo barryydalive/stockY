@@ -29,6 +29,6 @@ export const Header = styled.h2`
 `
 
 export const VL = styled.div`
-height: 70%;
-border-left: 3px solid black;
+  height: 70%;
+  border-left: 3px solid black;
 `

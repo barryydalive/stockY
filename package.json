@@ -1,7 +1,7 @@
 {
-  "name": "nerdsboiler",
+  "name": "stockY",
   "version": "1.0.0",
-  "description": "",
+  "description": "stock market portfolio app for TTP",
   "main": "index.js",
   "babel": {
     "presets": [
@@ -28,10 +28,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "alphavantage": "^2.0.0",
+    "axios": "^0.19.2",
     "express": "^4.17.1",
     "formik": "^2.1.4",
     "pg": "^7.18.1",
     "react": "^16.9.0",
+    "react-autocomplete": "^1.8.1",
     "react-dom": "^16.9.0",
     "sequelize": "^5.21.3",
     "styled-components": "^5.0.1",

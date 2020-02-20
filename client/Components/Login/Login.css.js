@@ -12,11 +12,10 @@ export const Box = styled.div`
   padding: 0 5vw;
 `
 
-export const Form = styled.form`
+export const FormContainer = styled.form`
   display:flex;
   align-items: center;
   flex-direction: column;
-  
 `
 
 export const Input = styled.input`

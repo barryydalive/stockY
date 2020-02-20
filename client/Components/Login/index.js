@@ -1,7 +1,7 @@
 import React, { useState, } from 'react'
-import { useFormik, } from 'formik'
+import { Formik, useFormik, Form, } from 'formik'
 import * as yup from 'yup'
-import { Box, Form, FirstRow, Row, Button, } from './Login.css.js'
+import { Box, FirstRow, Row, Button, FormContainer, } from './Login.css.js'
 import FormInput from './FormInput.js'
 
 const initialValues = {
@@ -18,11 +18,6 @@ const Login = () => {
 
   const [ formType, setFormType, ] = useState('Sign Up')
 
-  const formik = useFormik({
-    initialValues,
-    onSubmit,
-  })
-
   const toggleForm = () => {
     setFormType(prevState => prevState === 'Sign Up' ? 'Login' : 'Sign Up')
   }
@@ -30,24 +25,27 @@ const Login = () => {
   return (
     <Box>
       <h1>{formType}</h1>
-      <Form onSubmit={formik.handleSubmit}>
+      <Formik initialValues={initialValues} onSubmit={onSubmit} >
+        <Form>
+          <FormContainer>
+            {formType === 'Sign Up' && <FirstRow>
+              <FormInput name={'firstName'} type={'text'} />
+              <FormInput name={'lastName'} type={'text'} />
+            </FirstRow>}
+            <Row>
 
-        {formType === 'Sign Up' && <FirstRow>
-          <FormInput formik={formik} inputFor={'firstName'} type={'text'} />
-          <FormInput formik={formik} inputFor={'lastName'} type={'text'} />
-        </FirstRow>}
-        <Row>
+              <FormInput name={'email'} type={'email'} />
+            </Row>
+            <Row>
 
-          <FormInput formik={formik} inputFor={'email'} type={'email'} />
-        </Row>
-        <Row>
+              <FormInput name={'password'} type={'password'} />
+            </Row>
+            <Button type='submit'>Submit</Button>
+          </FormContainer>
+        </Form>
 
-          <FormInput formik={formik} inputFor={'password'} type={'password'} />
-        </Row>
-        <Button type='submit'>Submit</Button>
-      </Form>
-
-      Already have an account?
+      </Formik>
+        Already have an account?
       <Button onClick={toggleForm}>Login Instead</Button>
     </Box>
   )
