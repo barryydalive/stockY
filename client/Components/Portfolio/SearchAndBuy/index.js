@@ -1,32 +1,26 @@
-import React from 'react'
-import { useFormik, } from 'formik'
+import React, { useState, } from 'react'
+import Search from './Search'
+import Buy from './Buy'
+import { SearchAndBuyContext, } from '../../../Context'
 
-const initialValues = {
-  ticker: '',
-}
-
-const onSubmit = (values) => {
-  alert(JSON.stringify(values, null, 2))
-}
 const SearchAndBuy = () => {
-  const formik = useFormik({
-    initialValues,
-    onSubmit, })
+  const [ stock, setStock, ] = useState({})
+  const [ cash, setCash, ] = useState(5000)
 
+  console.log('stock:', stock)
   return (
     <div>
-      <form onSubmit={formik.handleSubmit}>
-        <label>Company Ticker Symbol</label>
-        <input
-          id={'ticker'}
-          name={'ticker'}
-          type={'text'}
-          onChange={formik.handleChange}
-          value={formik.values.ticker}
-          placeholder={'TCKR'}
-        />
-        <button type='submit'>Search</button>
-      </form>
+      <SearchAndBuyContext.Provider
+        value={{
+          stock,
+          setStock,
+          cash,
+          setCash,
+        }}>
+        Cash - ${cash}
+        <Search />
+        {stock.symbol && <Buy />}
+      </SearchAndBuyContext.Provider>
     </div>
   )
 }
