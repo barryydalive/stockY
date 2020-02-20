@@ -1,8 +1,10 @@
-import React, { useState, } from 'react'
+import React, { useState, useContext, } from 'react'
 import { Formik, useFormik, Form, } from 'formik'
 import * as yup from 'yup'
 import { Box, FirstRow, Row, Button, FormContainer, } from './Login.css.js'
 import FormInput from './FormInput.js'
+import axios from 'axios'
+import { UserContext, } from '../../Context/index.js'
 
 const initialValues = {
   firstName: '',
@@ -11,12 +13,35 @@ const initialValues = {
   password: '',
 }
 
-const onSubmit = (values) => {
-  alert(JSON.stringify(values, null, 2))
-}
 const Login = () => {
-
+  const { user, setUser, } = useContext(UserContext)
   const [ formType, setFormType, ] = useState('Sign Up')
+  const onSubmit = async ({ email, password, firstName, lastName, }) => {
+    let res
+    try {
+      if (formType === 'Login') {
+        res = await axios.post('/api/auth/login', { email,
+          password, })
+        console.log('res.data:', res.data)
+        setUser(res.data)
+
+      }
+      if (formType === 'Sign Up') {
+        const address = '/api/auth/signup'
+        console.log('address:', address)
+        res = await axios.post(address, {
+          email,
+          password,
+          firstName,
+          lastName,
+        })
+        console.log('res.data:', res.data)
+        setUser(res.data)
+      }
+    } catch (authError) {
+      alert('incorrect password/email')
+    }
+  }
 
   const toggleForm = () => {
     setFormType(prevState => prevState === 'Sign Up' ? 'Login' : 'Sign Up')

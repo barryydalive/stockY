@@ -30,8 +30,12 @@
   "dependencies": {
     "alphavantage": "^2.0.0",
     "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "connect-session-sequelize": "^6.1.1",
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
     "formik": "^2.1.4",
+    "passport": "^0.4.1",
     "pg": "^7.18.1",
     "react": "^16.9.0",
     "react-autocomplete": "^1.8.1",
