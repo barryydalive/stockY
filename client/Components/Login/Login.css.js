@@ -54,3 +54,10 @@ export const Button = styled.button`
   height: 5em;
   width: 7em;
 `
+export const ToggleForm = styled.p`
+  color: blue;
+  :hover {
+    color: navy
+  };
+  cursor: pointer;
+`

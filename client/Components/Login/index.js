@@ -1,7 +1,7 @@
 import React, { useState, useContext, } from 'react'
 import { Formik, useFormik, Form, } from 'formik'
 import * as yup from 'yup'
-import { Box, FirstRow, Row, Button, FormContainer, } from './Login.css.js'
+import { Box, FirstRow, Row, Button, FormContainer, ToggleForm, } from './Login.css.js'
 import FormInput from './FormInput.js'
 import axios from 'axios'
 import { UserContext, } from '../../Context/index.js'
@@ -65,13 +65,12 @@ const Login = () => {
 
               <FormInput name={'password'} type={'password'} />
             </Row>
-            <Button type='submit'>Submit</Button>
+            <Button type='submit'>{formType}</Button>
           </FormContainer>
         </Form>
 
       </Formik>
-        Already have an account?
-      <Button onClick={toggleForm}>Login Instead</Button>
+      <ToggleForm onClick={toggleForm}>{formType === 'Sign Up' ? 'Already have an account? Login' : 'Need An Account Sign Up'} Instead</ToggleForm>
     </Box>
   )
 }
