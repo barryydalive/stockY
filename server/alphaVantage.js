@@ -1,4 +1,4 @@
-const { AlphaVantageAPI, } = require('../secrets')
+const AlphaVantageAPI = require('../secrets').AlphaVantageAPI
 
 const alphaVantage = require('alphavantage')
 

@@ -1,7 +1,7 @@
 const db = require('../db')
 const Sequelize = require('sequelize')
 const axios = require('axios')
-const { AlphaVantageAPI, } = require('../../../secrets')
+const AlphaVantageAPI = process.env.AlphaVantageAPI || require('../../../secrets').AlphaVantageAPI
 const Stock = db.define('stock', {
   symbol: {
     type: Sequelize.STRING,
