@@ -12,8 +12,10 @@ export const Suggestions = styled.ul`
 `
 export const Suggestion = styled.li`
   padding: 0.5rem;
+  background-color: #C6DABF;
   :hover {
-    background-color: lightgrey;
+    background-color: #114B5F;
+    color:white;
     cursor: pointer;
     font-weight: 700;
   }

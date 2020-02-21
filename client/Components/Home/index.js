@@ -1,5 +1,5 @@
 import React, { useContext, } from 'react'
-import { Nav, } from './Home.css'
+import { Nav, Body, } from './Home.css'
 import axios from 'axios'
 import { UserContext, } from '../../Context'
 import Portfolio from './Portfolio'
@@ -19,10 +19,12 @@ const Home = () => {
         <Link to={'/transactions'}>transactions</Link>
         <button onClick={logout}>logout</button>
       </Nav>
-      <Switch>
-        <Route path='/transactions' component={Transactions} />
-        <Route path='/' component={Portfolio} />
-      </Switch>
+      <Body>
+        <Switch>
+          <Route path='/transactions' component={Transactions} />
+          <Route path='/' component={Portfolio} />
+        </Switch>
+      </Body>
     </Router>
   )
 }

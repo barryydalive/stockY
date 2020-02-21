@@ -10,6 +10,7 @@ export const Box = styled.div`
   border: 2px solid black;
   text-align: center;
   padding: 0 5vw;
+  background-color: #C6DABF;
 `
 
 export const FormContainer = styled.form`
@@ -51,7 +52,7 @@ export const FirstRow = styled.div`
 `
 
 export const Button = styled.button`
-  height: 5em;
+  height: 2em;
   width: 7em;
 `
 export const ToggleForm = styled.p`
@@ -60,4 +61,10 @@ export const ToggleForm = styled.p`
     color: navy
   };
   cursor: pointer;
+`
+
+export const Background = styled.div`
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: #1A936F
 `

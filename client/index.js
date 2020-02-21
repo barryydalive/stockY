@@ -4,6 +4,7 @@ import Route from './Components/Route'
 import axios from 'axios'
 import { UserContext, } from './Context'
 import Loader from 'react-loader'
+import './index.css'
 
 const App = () => {
   const [ loaded, setLoaded, ] = useState(false)
