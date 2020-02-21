@@ -1,13 +1,12 @@
 import React, { useState, useContext, } from 'react'
 import Search from './Search'
 import Buy from './Buy'
-import { SearchAndBuyContext, UserContext, } from '../../../Context'
+import { SearchAndBuyContext, UserContext, } from '../../../../Context'
 
 const SearchAndBuy = () => {
   const [ stock, setStock, ] = useState({})
-  const { user, setUser, } = useContext(UserContext)
+  const { user, } = useContext(UserContext)
 
-  console.log('stock:', stock)
   return (
     <div>
       <SearchAndBuyContext.Provider

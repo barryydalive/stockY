@@ -1,6 +1,6 @@
 import React, { useState, useContext, } from 'react'
 import { Formik, Form, } from 'formik'
-import * as yup from 'yup'
+// import * as yup from 'yup'
 import { Box, FirstRow, Row, Button, FormContainer, ToggleForm, } from './Login.css.js'
 import FormInput from './FormInput.js'
 import axios from 'axios'
@@ -14,7 +14,7 @@ const initialValues = {
 }
 
 const Login = () => {
-  const { user, setUser, } = useContext(UserContext)
+  const { setUser, } = useContext(UserContext)
   const [ formType, setFormType, ] = useState('Sign Up')
   const onSubmit = async ({ email, password, firstName, lastName, }) => {
     let res

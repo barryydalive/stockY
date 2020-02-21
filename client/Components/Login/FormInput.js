@@ -1,6 +1,6 @@
 import React from 'react'
 import { Input, FormField, } from './Login.css'
-import { useField, Field, } from 'formik'
+import { useField, } from 'formik'
 const FormInput = ({ formik, name, type, }) => {
   const title = name.split(/(?=[A-Z])/).map(word => word[0].toUpperCase() + word.slice(1)).join(' ')
   const [ field, ] = useField(name)

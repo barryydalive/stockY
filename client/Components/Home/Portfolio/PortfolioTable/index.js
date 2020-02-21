@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext, } from 'react'
 import axios from 'axios'
-import { UserContext, } from '../../../Context'
+import { UserContext, } from '../../../../Context'
 
 const PortfolioTable = () => {
   const [ stocks, setStocks, ] = useState([])
