@@ -13,7 +13,7 @@ const User = db.define('user', {
   },
   password: {
     type: Sequelize.STRING,
-    // Making `.password` act like a func hides it when serializing to JSON.
+    allowNull: false,
     get() {
       return () => this.getDataValue('password')
     },
