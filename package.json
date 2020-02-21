@@ -1,6 +1,9 @@
 {
   "name": "stockY",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.13.0"
+  },
   "description": "stock market portfolio app for TTP",
   "main": "index.js",
   "babel": {
