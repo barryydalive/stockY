@@ -1,6 +1,6 @@
 import React from 'react'
 import { useField, } from 'formik'
-import debounce from '../../../../utility/debounce'
+import debounce from '../../../../../utility/debounce'
 import axios from 'axios'
 
 const getData = async (search, setSuggestions) => {
@@ -14,10 +14,8 @@ const getData = async (search, setSuggestions) => {
 const debouncedData = debounce(getData, 500)
 
 const AutoCompleteSearch = ({ suggestions, setSuggestions, ...props } ) => {
-  const [ field, meta, helpers, ] = useField('ticker')
-  console.log('props:', props)
-  console.log('helpers:', helpers)
-  console.log('meta:', meta)
+  const [ field, , helpers, ] = useField('ticker')
+
   const handleChange = async (e) => {
     field.onChange(e)
     debouncedData(e.target.value, setSuggestions)
