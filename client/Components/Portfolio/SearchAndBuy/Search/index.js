@@ -1,16 +1,16 @@
 import React, { useState, useContext, } from 'react'
 import { Formik, Form, } from 'formik'
-import alpha from '../../../../alphaVantage'
 import { SearchAndBuyContext, } from '../../../../Context'
 import AutoCompleteSearch from './AutoCompleteSearch'
+import axios from 'axios'
 
 const Search = () => {
   const { setStock, } = useContext(SearchAndBuyContext)
   const onSubmit = async (values) => {
     try {
-      const { data, } = alpha.util.polish(await alpha.data.quote(values.ticker))
-      setStock(data)
+      const { data, } = await axios.get(`/api/stock/${values.ticker}`)
       console.log('data:', data)
+      setStock(data)
     } catch (err) {
       console.log(err)
     }

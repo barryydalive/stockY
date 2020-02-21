@@ -1,6 +1,6 @@
 const Router = require('express').Router()
 
-const User = require('../db/models/user')
+const { User, } = require('../db/models/')
 module.exports = Router
 
 Router.post('/login', async (req, res, next) => {

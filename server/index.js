@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const sessionStore = new SequelizeStore({ db, })
+const morgan = require('morgan')
 
 const passport = require('passport')
 
@@ -32,6 +33,7 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.use(morgan('dev'))
 app.use(express.static(path.join(__dirname, '..', 'dist')))
 app.use(bodyParser.json())
 app.use('/api', require('./api'))
