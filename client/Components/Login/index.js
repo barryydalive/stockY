@@ -16,6 +16,7 @@ const initialValues = {
 const Login = () => {
   const { setUser, } = useContext(UserContext)
   const [ formType, setFormType, ] = useState('Sign Up')
+  const [ error, setError, ] = useState('')
   const onSubmit = async ({ email, password, firstName, lastName, }) => {
     let res
     try {
@@ -39,7 +40,8 @@ const Login = () => {
         setUser(res.data)
       }
     } catch (authError) {
-      alert('incorrect password/email')
+      console.log('authError:', authError)
+      setError('something is wrong with your submission please try again')
     }
   }
 
@@ -50,7 +52,7 @@ const Login = () => {
   return (
     <Box>
       <h1>{formType}</h1>
-      <Formik initialValues={initialValues} onSubmit={onSubmit} >
+      <Formik initialValues={initialValues} onSubmit={onSubmit}>
         <Form>
           <FormContainer>
             {formType === 'Sign Up' && <FirstRow>
@@ -58,17 +60,15 @@ const Login = () => {
               <FormInput name={'lastName'} type={'text'} />
             </FirstRow>}
             <Row>
-
               <FormInput name={'email'} type={'email'} />
             </Row>
             <Row>
-
               <FormInput name={'password'} type={'password'} />
             </Row>
             <Button type='submit'>{formType}</Button>
+            {error && <div style={{ color: 'red', }}>{error}</div>}
           </FormContainer>
         </Form>
-
       </Formik>
       <ToggleForm onClick={toggleForm}>{formType === 'Sign Up' ? 'Already have an account? Login' : 'Need An Account Sign Up'} Instead</ToggleForm>
     </Box>

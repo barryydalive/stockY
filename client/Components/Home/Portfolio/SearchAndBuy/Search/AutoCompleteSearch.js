@@ -2,6 +2,7 @@ import React from 'react'
 import { useField, } from 'formik'
 import debounce from '../../../../../utility/debounce'
 import axios from 'axios'
+import { Suggestion, SearchLayout, Input, Suggestions, } from './AutoComplete.css'
 
 const getData = async (search, setSuggestions) => {
   if (search) {
@@ -13,7 +14,7 @@ const getData = async (search, setSuggestions) => {
 }
 const debouncedData = debounce(getData, 500)
 
-const AutoCompleteSearch = ({ suggestions, setSuggestions, ...props } ) => {
+const AutoCompleteSearch = ({ suggestions, setSuggestions, ...props }) => {
   const [ field, , helpers, ] = useField('ticker')
 
   const handleChange = async (e) => {
@@ -21,16 +22,15 @@ const AutoCompleteSearch = ({ suggestions, setSuggestions, ...props } ) => {
     debouncedData(e.target.value, setSuggestions)
   }
   return (
-    <>
+    <SearchLayout>
       <label>Company Ticker Symbol</label>
-      <input
+      <Input
         {...field}
         onChange={handleChange}
-        placeholder={'TCKR'}
-      />
-      <ul>
+        placeholder={'TCKR'} />
+      <Suggestions>
         {suggestions.slice(0, 10).map(({ symbol, name, }) =>
-          <li
+          <Suggestion
             value='submit'
             onClick={() => {
               helpers.setValue(symbol)
@@ -40,10 +40,11 @@ const AutoCompleteSearch = ({ suggestions, setSuggestions, ...props } ) => {
             key={symbol}
           >
             {name} - {symbol}
-          </li>
+          </Suggestion>
         )}
-      </ul>
-    </>)
+
+      </Suggestions>
+    </SearchLayout>)
 }
 
 export default AutoCompleteSearch
