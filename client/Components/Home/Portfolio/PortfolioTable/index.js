@@ -47,7 +47,7 @@ const PortfolioTable = ({ setPortfolioWorth, }) => {
           if (currentPrice < open) { color = 'red' }
         }
         return (
-          <PortfolioRow>
+          <PortfolioRow key={symbol}>
             <RowLeftSide>
               <Symbol color={color}>{symbol}</Symbol> <div> - {quantity} shares</div>
             </RowLeftSide>

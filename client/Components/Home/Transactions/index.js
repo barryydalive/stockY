@@ -17,8 +17,8 @@ const Transactions = () => {
       <Header>Transactions</Header>
       <ContentArea>
         <div>
-          {transactions.map(({ numOfShares, stock, pricePerShare, }) =>
-            <p>BUY - {stock.symbol} {numOfShares} @ ${`${pricePerShare}`.slice(0, -2)}.{`${pricePerShare}`.slice(-2)}</p>
+          {transactions.map(({ numOfShares, stock, pricePerShare, createdAt, }) =>
+            <p key={createdAt}>BUY - {stock.symbol} {numOfShares} @ ${`${pricePerShare}`.slice(0, -2)}.{`${pricePerShare}`.slice(-2)} on {new Date(createdAt).toISOString().replace(/T/, ' ').replace(/\..+/, '')} UTC</p>
           )}
         </div>
       </ContentArea>

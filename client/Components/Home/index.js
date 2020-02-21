@@ -1,5 +1,5 @@
 import React, { useContext, } from 'react'
-import { Nav, Body, } from './Home.css'
+import { Nav, Body, NavSection, Logo, } from './Home.css'
 import axios from 'axios'
 import { UserContext, } from '../../Context'
 import Portfolio from './Portfolio'
@@ -15,9 +15,16 @@ const Home = () => {
   return (
     <Router>
       <Nav>
-        <Link to={'/'}>portfolio </Link>
-        <Link to={'/transactions'}>transactions</Link>
-        <button onClick={logout}>logout</button>
+        <NavSection>
+          <Link to={'/'}>
+            <Logo src='/stockyX.png' alt='stockyX logo' />
+          </Link>
+        </NavSection>
+        <NavSection>
+          <Link to={'/'}>portfolio </Link>
+          <Link to={'/transactions'}>transactions</Link>
+          <button onClick={logout}>logout</button>
+        </NavSection>
       </Nav>
       <Body>
         <Switch>

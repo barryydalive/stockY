@@ -35,6 +35,8 @@ app.use(passport.session())
 
 app.use(morgan('dev'))
 app.use(express.static(path.join(__dirname, '..', 'dist')))
+app.use(express.static(path.join(__dirname, '..', 'public')))
+
 app.use(bodyParser.json())
 app.use('/api', require('./api'))
 

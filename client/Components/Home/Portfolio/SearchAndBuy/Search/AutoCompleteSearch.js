@@ -29,8 +29,9 @@ const AutoCompleteSearch = ({ suggestions, setSuggestions, ...props }) => {
         onChange={handleChange}
         placeholder={'TCKR'} />
       <Suggestions>
-        {suggestions.slice(0, 10).map(({ symbol, name, }) =>
+        {suggestions.map(({ symbol, name, }) =>
           <Suggestion
+            key={symbol}
             value='submit'
             onClick={() => {
               helpers.setValue(symbol)
