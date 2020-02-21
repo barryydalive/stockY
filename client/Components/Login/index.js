@@ -23,24 +23,20 @@ const Login = () => {
       if (formType === 'Login') {
         res = await axios.post('/api/auth/login', { email,
           password, })
-        console.log('res.data:', res.data)
         setUser(res.data)
 
       }
       if (formType === 'Sign Up') {
         const address = '/api/auth/signup'
-        console.log('address:', address)
         res = await axios.post(address, {
           email,
           password,
           firstName,
           lastName,
         })
-        console.log('res.data:', res.data)
         setUser(res.data)
       }
     } catch (authError) {
-      console.log('authError:', authError)
       setError('something is wrong with your submission please try again')
     }
   }

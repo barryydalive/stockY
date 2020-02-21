@@ -29,7 +29,6 @@ const PortfolioTable = ({ setPortfolioWorth, }) => {
         }
       }))
       setCurrentStockPrices(stocksWithCP)
-      console.log('cash:', cash)
       const portFolioTotal = cash + stocksWithCP.reduce((acc, curr) => acc + Number(curr.total.toString().split('.').join('')), 0)
       setPortfolioWorth(portFolioTotal)
     }

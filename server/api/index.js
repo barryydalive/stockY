@@ -2,6 +2,7 @@ const Router = require('express').Router()
 const axios = require('axios')
 const polish = require('../util/polish')
 const { Stock, } = require('../db/models')
+const AlphaVantageAPI = process.env.AlphaVantageAPI || require('../../secrets').AlphaVantageAPI
 
 Router.use('/auth', require('./auth'))
 Router.use('/transaction', require('./transaction'))
@@ -19,12 +20,9 @@ Router.get('/search/:search', async (req, res, next)=>{
 })
 
 Router.get('/stock/:tckr', async(req, res, next)=>{
-  const { AlphaVantageAPI, } = require('../../secrets')
   try {
     const { data, } = await axios.get(`https://www.alphavantage.co/query?apikey=${AlphaVantageAPI}&function=GLOBAL_QUOTE&symbol=${req.params.tckr}` )
     const { data: cleanData, } = polish(data)
-    console.log('data:', data)
-    console.log('cleanData:', cleanData)
     cleanData.price = Number(cleanData.price.slice(0, cleanData.price.length - 2).split('.').join(''))
     res.send(cleanData)
   } catch (err) {

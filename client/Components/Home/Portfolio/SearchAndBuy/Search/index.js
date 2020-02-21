@@ -9,7 +9,6 @@ const Search = () => {
   const onSubmit = async (values) => {
     try {
       const { data, } = await axios.get(`/api/stock/${values.ticker}`)
-      console.log('data:', data)
       setStock(data)
     } catch (err) {
       console.log(err)
@@ -17,7 +16,6 @@ const Search = () => {
   }
   const [ suggestions, setSuggestions, ] = useState([])
 
-  console.log('suggestions:', suggestions)
   return (
     <Formik initialValues={{ ticker: '', }} onSubmit={onSubmit}>
       {props => <Form >
