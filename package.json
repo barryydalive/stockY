@@ -18,6 +18,7 @@
   },
   "scripts": {
     "start": "node server",
+    "build": "webpack",
     "start-dev": "NODE_ENV='development' npm run build-client-watch & NODE_ENV='development' npm run start-server",
     "start-server": "nodemon server",
     "build-client": "webpack",
