@@ -1,11 +1,11 @@
-import React, { useState, } from 'react'
+import React, { useState, useContext, } from 'react'
 import Search from './Search'
 import Buy from './Buy'
-import { SearchAndBuyContext, } from '../../../Context'
+import { SearchAndBuyContext, UserContext, } from '../../../Context'
 
 const SearchAndBuy = () => {
   const [ stock, setStock, ] = useState({})
-  const [ cash, setCash, ] = useState(5000)
+  const { user, setUser, } = useContext(UserContext)
 
   console.log('stock:', stock)
   return (
@@ -14,10 +14,8 @@ const SearchAndBuy = () => {
         value={{
           stock,
           setStock,
-          cash,
-          setCash,
         }}>
-        Cash - ${cash}
+        Cash - ${Math.floor(user.cash / 100)}.{user.cash % 100}
         <Search />
         {stock.symbol && <Buy />}
       </SearchAndBuyContext.Provider>

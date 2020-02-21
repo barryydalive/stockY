@@ -1,6 +1,6 @@
 import React, { useState, useEffect, } from 'react'
 import ReactDOM from 'react-dom'
-import Home from './Components/Home'
+import Route from './Components/Route'
 import axios from 'axios'
 import { UserContext, } from './Context'
 import Loader from 'react-loader'
@@ -31,11 +31,12 @@ const App = () => {
   }
   useEffect(() => {
     const getMe = async () => {
-      const { data: { email, firstName, lastName, }, } = await axios.get('/api/auth/me')
+      const { data: { email, firstName, lastName, cash, }, } = await axios.get('/api/auth/me')
       setUser({
         email,
         firstName,
         lastName,
+        cash,
       })
       setLoaded(true)
     }
@@ -48,7 +49,7 @@ const App = () => {
       setUser,
     }}>
       <Loader className='spinner' options={options}loaded={loaded}>
-        <Home />
+        <Route />
       </Loader>
     </UserContext.Provider >
   )
