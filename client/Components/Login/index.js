@@ -50,7 +50,7 @@ const Login = () => {
 
       <Box>
         <h1>{formType}</h1>
-        <Formik initialValues={initialValues} onSubmit={onSubmit}> }
+        <Formik initialValues={initialValues} onSubmit={onSubmit}>
           <Form>
             <FormContainer>
               {formType === 'Sign Up' && <FirstRow>
